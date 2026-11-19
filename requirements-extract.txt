@@ -1,0 +1,7 @@
+# Feature extraction only (NOT exercised in the build environment: needs MELD data and model weights).
+# System dependency: ffmpeg
+torch
+torchvision
+transformers
+opensmile
+opencv-python-headless

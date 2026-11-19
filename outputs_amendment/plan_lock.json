@@ -1,0 +1,90 @@
+{
+  "plan_hash": "b03fccad2d9a2d58a1d44a471235a479cc2fa7349c61a2babcd1f27cea51b07e",
+  "plan": {
+    "alphas": [
+      0.1,
+      0.05,
+      0.2
+    ],
+    "primary_alpha": 0.1,
+    "n_min_list": [
+      30,
+      50,
+      100
+    ],
+    "cal_profiles": [
+      "uniform",
+      "skewed"
+    ],
+    "test_profile": "uniform",
+    "designs": [
+      "A",
+      "B"
+    ],
+    "ece_bins": 15,
+    "bootstrap_B": 500,
+    "fallback": [
+      "pattern",
+      "cardinality",
+      "global"
+    ],
+    "taxonomies": [
+      "cardinality",
+      "text"
+    ],
+    "cal_keep_frac": 1.0,
+    "corruption": [
+      {
+        "name": "audio_snr20",
+        "modality": "audio",
+        "calibration": "matched"
+      },
+      {
+        "name": "audio_snr20",
+        "modality": "audio",
+        "calibration": "mismatched"
+      },
+      {
+        "name": "audio_snr10",
+        "modality": "audio",
+        "calibration": "matched"
+      },
+      {
+        "name": "audio_snr10",
+        "modality": "audio",
+        "calibration": "mismatched"
+      },
+      {
+        "name": "audio_snr0",
+        "modality": "audio",
+        "calibration": "matched"
+      },
+      {
+        "name": "audio_snr0",
+        "modality": "audio",
+        "calibration": "mismatched"
+      },
+      {
+        "name": "text_drop10",
+        "modality": "text",
+        "calibration": "matched"
+      },
+      {
+        "name": "text_drop10",
+        "modality": "text",
+        "calibration": "mismatched"
+      },
+      {
+        "name": "text_drop30",
+        "modality": "text",
+        "calibration": "matched"
+      },
+      {
+        "name": "text_drop30",
+        "modality": "text",
+        "calibration": "mismatched"
+      }
+    ]
+  },
+  "test_evaluated": true
+}

@@ -1,0 +1,39 @@
+# Python environment and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Data (large; see README for how to obtain it)
+data/*
+!data/.gitkeep
+*.tar.gz
+tar
+
+# Trial, backup and superseded output folders
+outputs/
+outputs_first/
+outputs_trial/
+outputs_FINAL_backup/
+outputs_amendment_BACKUP/
+
+# Large binary artefacts
+*.npy
+*.npz
+*.pt
+*.pth
+*.pkl
+*.wav
+*.mp4
+
+# Private working notes
+CONTEXT_MASTER.md
+PART_P*.md
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

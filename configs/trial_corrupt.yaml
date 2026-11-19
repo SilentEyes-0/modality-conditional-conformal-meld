@@ -1,0 +1,44 @@
+# Experiment configuration. Anything under analysis_plan is hashed and frozen before test evaluation.
+paths:
+  features: data/features          # cached features: train.npz dev.npz test.npz (+ <split>__<condition>.npz)
+  outputs: outputs_trial
+data:
+  root: data/MELD.Raw
+  csv: {train: ../MELD_csv/train_sent_emo.csv, dev: ../MELD_csv/dev_sent_emo.csv, test: ../MELD_csv/test_sent_emo.csv}
+  video_dir: {train: train_splits, dev: dev_splits_complete, test: output_repeated_splits_test}
+features:
+  text_model: roberta-base
+  text_pooling: mean                # mean | first   (decide on validation pilot)
+  frames_per_clip: 8
+  audio_sr: 16000
+split:
+  cal_frac: 0.20
+  split_seed: 42
+train:
+  seeds: [42, 43, 44, 45, 46]
+  h1: 256
+  h2: 128
+  dropout: 0.30
+  lr: 0.001
+  weight_decay: 0.0001
+  batch_size: 128
+  epochs: 60
+  patience: 8
+  lambda_sentiment: 1.0
+  rho_full: 0.40                    # P(complete input) in training mask distribution; others share the rest
+  class_weighted: false             # ablation (g)
+analysis_plan:
+  alphas: [0.10, 0.05, 0.20]
+  primary_alpha: 0.10
+  n_min_list: [30, 50, 100]
+  cal_profiles: [uniform, skewed]   # Design B frequency profiles
+  test_profile: uniform
+  designs: [A, B]
+  ece_bins: 15
+  bootstrap_B: 500
+  fallback: [pattern, cardinality, global]
+  taxonomies: [cardinality, text]   # ablation (c), Design B only; [] to disable
+  cal_keep_frac: 1.0                # ablation (d): e.g. 0.5 keeps half of the calibration dialogues
+  corruption:
+    - {name: audio_snr10, modality: audio, calibration: matched}
+    - {name: audio_snr10, modality: audio, calibration: mismatched}                   # e.g. [{name: audio_snr10, modality: audio, calibration: matched}]

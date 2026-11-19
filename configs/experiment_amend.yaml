@@ -1,0 +1,97 @@
+paths:
+  features: data/features
+  outputs: outputs_amendment
+data:
+  root: data/MELD.Raw
+  csv:
+    train: ../MELD_csv/train_sent_emo.csv
+    dev: ../MELD_csv/dev_sent_emo.csv
+    test: ../MELD_csv/test_sent_emo.csv
+  video_dir:
+    train: train_splits
+    dev: dev_splits_complete
+    test: output_repeated_splits_test
+features:
+  text_model: roberta-base
+  text_pooling: mean
+  frames_per_clip: 8
+  audio_sr: 16000
+split:
+  cal_frac: 0.2
+  split_seed: 42
+train:
+  seeds:
+  - 42
+  - 43
+  - 44
+  - 45
+  - 46
+  h1: 256
+  h2: 128
+  dropout: 0.3
+  lr: 0.001
+  weight_decay: 0.0001
+  batch_size: 128
+  epochs: 60
+  patience: 8
+  lambda_sentiment: 1.0
+  rho_full: 0.4
+  class_weighted: false
+analysis_plan:
+  alphas:
+  - 0.1
+  - 0.05
+  - 0.2
+  primary_alpha: 0.1
+  n_min_list:
+  - 30
+  - 50
+  - 100
+  cal_profiles:
+  - uniform
+  - skewed
+  test_profile: uniform
+  designs:
+  - A
+  - B
+  ece_bins: 15
+  bootstrap_B: 500
+  fallback:
+  - pattern
+  - cardinality
+  - global
+  taxonomies:
+  - cardinality
+  - text
+  cal_keep_frac: 1.0
+  corruption:
+  - name: audio_snr20
+    modality: audio
+    calibration: matched
+  - name: audio_snr20
+    modality: audio
+    calibration: mismatched
+  - name: audio_snr10
+    modality: audio
+    calibration: matched
+  - name: audio_snr10
+    modality: audio
+    calibration: mismatched
+  - name: audio_snr0
+    modality: audio
+    calibration: matched
+  - name: audio_snr0
+    modality: audio
+    calibration: mismatched
+  - name: text_drop10
+    modality: text
+    calibration: matched
+  - name: text_drop10
+    modality: text
+    calibration: mismatched
+  - name: text_drop30
+    modality: text
+    calibration: matched
+  - name: text_drop30
+    modality: text
+    calibration: mismatched
