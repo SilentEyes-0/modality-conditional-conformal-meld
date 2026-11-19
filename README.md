@@ -153,10 +153,3 @@ python -m src.report.make_figures --dir outputs_amendment --out report_out
 
 Missingness is simulated and independent of content. Utterances within a dialogue are dependent, so the finite-sample guarantee is not claimed and coverage is reported as an empirical quantity. One dataset, one nonconformity score and one set of corruption levels were studied. Video corruption was not evaluated. MELD is scripted sitcom dialogue, and its labels are annotator judgements, not measurements of inner states.
 
-## Citation
-
-If you use this code, please cite the accompanying paper (details to be added after publication).
-
-## Licence
-
-[Add a licence here, for example MIT.] MELD is subject to its own licence and terms of use.
