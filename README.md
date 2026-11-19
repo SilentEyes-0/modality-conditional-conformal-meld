@@ -4,7 +4,7 @@ This repository contains the code, configurations and tests for a study of split
 
 The pipeline uses frozen text, audio and video features, a concatenation classifier trained with modality dropout, simulated missing and corrupted modalities, dialogue-grouped splits, five seeds (42 to 46) and a frozen analysis plan. Mask-conditional calibration is not new; the contribution is empirical evidence on a conversational benchmark.
 
-**Authors:** Jayanti Dansana, Anubhaba Swain, Anjan Manna, Aman Kumar, Ayush Kumar Singh, Anurag Karmakar
+**Authors:** Anjan Manna, Aman Kumar, Ayush Kumar Singh, Anurag Karmakar, Anubhaba Swain
 School of Computer Engineering, Kalinga Institute of Industrial Technology (KIIT), Bhubaneswar, India.
 
 ## Dataset
